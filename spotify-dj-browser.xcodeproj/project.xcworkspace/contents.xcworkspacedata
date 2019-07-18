@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:../spotify-dj-browser/Controllers/PlaylistsViewController.swift">
+   </FileRef>
+   <FileRef
+      location = "group:../AuthViewController.swift">
+   </FileRef>
+   <FileRef
+      location = "absolute:/Users/Yassin_Mziya/Desktop/spotify-dj-browser/spotify-dj-browser/SpotifyiOS.framework"
+      assignedFileDataType = "public.c-source">
+   </FileRef>
+   <FileRef
+      location = "self:spotify-dj-browser.xcodeproj">
+   </FileRef>
+</Workspace>
