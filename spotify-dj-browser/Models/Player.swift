@@ -82,4 +82,11 @@ class Player {
         }
     }
     
+    func playTrack(track: SPTAppRemoteContentItem) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let appRemote = appDelegate.spotifyAppRemote
+        
+        appRemote.playerAPI?.play(track, callback: nil)
+    }
+    
 }

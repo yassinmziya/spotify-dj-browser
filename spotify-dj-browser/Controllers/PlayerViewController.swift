@@ -72,12 +72,14 @@ class PlayerViewController: UIViewController {
         return btn
     }()
     
+    var initialFrame: CGRect!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         view.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handleViewPan)))
-        view.isUserInteractionEnabled = true
         navigationController?.isNavigationBarHidden = true
+        initialFrame = view.frame
         
         view.addSubview(dismissPlayerButton)
         dismissPlayerButton.addTarget(self, action: #selector(dismissButtonTapped), for: .touchUpInside)
@@ -112,7 +114,7 @@ class PlayerViewController: UIViewController {
         
         keyLabel.snp.makeConstraints { make in
             make.top.equalTo(albumArtImageView.snp.bottom).offset(24)
-            make.height.width.equalTo(keyLabel.intrinsicContentSize.height + 30)
+            make.width.equalTo(keyLabel.intrinsicContentSize.height + 30)
             make.height.equalTo(keyLabel.intrinsicContentSize.height)
             make.trailing.equalTo(albumArtImageView).offset(9)
         }
@@ -189,9 +191,21 @@ class PlayerViewController: UIViewController {
         guard let recognizerView = recognizer.view else {
             return
         }
-        var translation = recognizer.translation(in: view.superview)
-        recognizerView.transform = recognizerView.transform.translatedBy(x: 0, y: translation.y)
-        recognizer.setTranslation(.zero, in: recognizerView)
+        
+        if recognizer.state == .ended {
+            if recognizerView.frame.origin.y > 120 {
+                dismiss(animated: true, completion: nil)
+            } else {
+                UIView.animate(withDuration: 0.18, delay: 0, options: .curveEaseOut, animations: {
+                    recognizerView.frame = self.initialFrame
+                    recognizerView.setNeedsLayout()
+                }, completion: nil)
+            }
+        } else {
+            var translation = recognizer.translation(in: view.superview)
+            recognizerView.transform = recognizerView.transform.translatedBy(x: 0, y: translation.y)
+            recognizer.setTranslation(.zero, in: recognizerView)
+        }
         
     }
     

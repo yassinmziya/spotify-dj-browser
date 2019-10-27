@@ -32,8 +32,14 @@ class TabBarController: UITabBarController {
     }
     
     @objc func playerTapped(recognizer: UITapGestureRecognizer) {
-        // let playerVC = PlayerViewController()
-        self.present(PlayerViewController(), animated: true, completion: nil)
+        let playerVC = PlayerViewController()
+        // make presentation controller transarent
+        playerVC.providesPresentationContextTransitionStyle = true
+        playerVC.definesPresentationContext = true
+        playerVC.modalPresentationStyle = .overCurrentContext
+        
+        // present
+        self.present(playerVC, animated: true, completion: nil)
     }
     
     func setupTabs() {

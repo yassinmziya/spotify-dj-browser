@@ -17,12 +17,15 @@ class SPTContentItemTableViewCell: UITableViewCell {
 
     static let reuseId = "SPTContentItemTableViewCell"
     var delegate: SPTContentItemTableViewCellDelegate!
+    var needsLoadImage: Bool = true
     
     var item: SPTAppRemoteContentItem! {
         didSet {
-            Networking.shared.getImage(item: item, dimensions: CGSize(width: 100, height: 100)) { image in
-                self.delegate.cacheItemImage(id: self.item.uri, image: image)
-                self.itemImageView.image = image
+            if needsLoadImage {
+                Networking.shared.getImage(item: item, dimensions: CGSize(width: 100, height: 100)) { image in
+                    self.delegate.cacheItemImage(id: self.item.uri, image: image)
+                    self.itemImageView.image = image
+                }
             }
             
             itemTitleLabel.text = item.title
@@ -31,7 +34,7 @@ class SPTContentItemTableViewCell: UITableViewCell {
     
     var itemImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = .red
+        imageView.backgroundColor = .lightGray
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()

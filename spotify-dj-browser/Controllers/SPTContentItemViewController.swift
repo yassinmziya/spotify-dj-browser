@@ -33,10 +33,6 @@ class SPTContentItemViewController: UIViewController {
         return tableView
     }()
     
-    var collapsedPlayerView: CollapsedPlayerView = {
-       return CollapsedPlayerView()
-    }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -75,9 +71,13 @@ extension SPTContentItemViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SPTContentItemTableViewCell.reuseId) as! SPTContentItemTableViewCell
         cell.delegate = self
+        cell.itemImageView.image = nil
         let item = sptChildContentItems[indexPath.row]
         if let image = imageCache[item.uri] {
+            cell.needsLoadImage = false
             cell.itemImageView.image = image
+        } else {
+            cell.needsLoadImage = true
         }
         cell.item = item
         return cell
@@ -88,9 +88,20 @@ extension SPTContentItemViewController: UITableViewDataSource {
 extension SPTContentItemViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = SPTContentItemViewController()
-        vc.sptContentItem = sptChildContentItems[indexPath.row]
-        navigationController?.pushViewController(vc, animated: true)
+        let item = sptChildContentItems[indexPath.row]
+        print(item.uri)
+        if item.uri.contains("track:") {
+            Player.shared.playTrack(track: item)
+        } else if item.uri.contains("playlist:") {
+            let vc = PlaylistViewController()
+            vc.sptContentItem = item
+            navigationController?.pushViewController(vc, animated: true)
+        } else{
+            let vc = SPTContentItemViewController()
+            vc.sptContentItem = item
+            navigationController?.pushViewController(vc, animated: true)
+        
+        }
     }
     
 }

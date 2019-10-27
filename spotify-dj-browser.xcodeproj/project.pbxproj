@@ -16,6 +16,7 @@
 		1C9EF7AA22DE51CA00C22345 /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9EF7A922DE51CA00C22345 /* Playlist.swift */; };
 		1C9EF7AC22DE56A200C22345 /* SPTContentItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9EF7AB22DE56A200C22345 /* SPTContentItemViewController.swift */; };
 		1C9EF7AE22DE618200C22345 /* SPTContentItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9EF7AD22DE618200C22345 /* SPTContentItemTableViewCell.swift */; };
+		1C9EF7B022E3595800C22345 /* PlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C9EF7AF22E3595800C22345 /* PlaylistViewController.swift */; };
 		1CBFB34F22CCF8E8004D5259 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBFB34E22CCF8E8004D5259 /* AppDelegate.swift */; };
 		1CBFB35622CCF8E9004D5259 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CBFB35522CCF8E9004D5259 /* Assets.xcassets */; };
 		1CBFB35922CCF8E9004D5259 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CBFB35722CCF8E9004D5259 /* LaunchScreen.storyboard */; };
@@ -38,6 +39,7 @@
 		1C9EF7A922DE51CA00C22345 /* Playlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
 		1C9EF7AB22DE56A200C22345 /* SPTContentItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SPTContentItemViewController.swift; sourceTree = "<group>"; };
 		1C9EF7AD22DE618200C22345 /* SPTContentItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SPTContentItemTableViewCell.swift; path = "spotify-dj-browser/Views/Cells/SPTContentItemTableViewCell.swift"; sourceTree = SOURCE_ROOT; };
+		1C9EF7AF22E3595800C22345 /* PlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewController.swift; sourceTree = "<group>"; };
 		1CBFB34B22CCF8E8004D5259 /* spotify-dj-browser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "spotify-dj-browser.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CBFB34E22CCF8E8004D5259 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1CBFB35522CCF8E9004D5259 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				1C3BEE5022D3E4C0007684B9 /* PlayerViewController.swift */,
 				1C9EF7A722DBCD1600C22345 /* TabBarController.swift */,
 				1C9EF7AB22DE56A200C22345 /* SPTContentItemViewController.swift */,
+				1C9EF7AF22E3595800C22345 /* PlaylistViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 				1C9EF7A422DB747900C22345 /* AudioFeatures.swift in Sources */,
 				1CBFB37C22CFC179004D5259 /* Networking.swift in Sources */,
 				1CBFB37522CE390C004D5259 /* AuthViewController.swift in Sources */,
+				1C9EF7B022E3595800C22345 /* PlaylistViewController.swift in Sources */,
 				1C9EF7AE22DE618200C22345 /* SPTContentItemTableViewCell.swift in Sources */,
 				1CBFB34F22CCF8E8004D5259 /* AppDelegate.swift in Sources */,
 				1C3BEE5322D3F257007684B9 /* PlaybackProgressView.swift in Sources */,
