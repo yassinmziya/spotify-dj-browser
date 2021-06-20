@@ -17,8 +17,7 @@ class Player {
     var playerState: SPTAppRemotePlayerState?
     var audioFeatures: AudioFeatures?
     
-    private init() {
-    }
+    private init() { }
     
     func updatePlayerState(newState: SPTAppRemotePlayerState?) {
         playerState = newState
@@ -48,13 +47,11 @@ class Player {
     }
     
     func skipTrack() {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.spotifyAppRemote.playerAPI?.skip(toNext: nil)
+        SpotifyManager.shared.appRemote.playerAPI?.skip(toNext: nil)
     }
     
     func prevTrack() {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.spotifyAppRemote.playerAPI?.skip(toPrevious: nil)
+        SpotifyManager.shared.appRemote.playerAPI?.skip(toPrevious: nil)
     }
     
     func pauseResumeTrack() {
@@ -62,8 +59,7 @@ class Player {
             return
         }
         
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let appRemote = appDelegate.spotifyAppRemote
+        let appRemote = SpotifyManager.shared.appRemote
         
         if playerState.isPaused {
             appRemote.playerAPI?.resume({ (_, error) in
@@ -83,10 +79,8 @@ class Player {
     }
     
     func playTrack(track: SPTAppRemoteContentItem) {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let appRemote = appDelegate.spotifyAppRemote
+        let appRemote = SpotifyManager.shared.appRemote
         
         appRemote.playerAPI?.play(track, callback: nil)
     }
-    
 }

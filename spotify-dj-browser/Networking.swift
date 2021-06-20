@@ -10,42 +10,42 @@ import Foundation
 import Alamofire
 
 class Networking {
-    // MARK:- SINGLETON PATTERN
+    
+    private let baseURL = "https://api.spotify.com/v1"
+    
+    private var accessToken: String? {
+        return SpotifyManager.shared.accessToken
+    }
+    
     static let shared = Networking()
-    let baseURL = "https://api.spotify.com/v1"
     
     private init() {}
     
-    // MARK:- CLASS WIDE HELPERS
-    private func getAccessToken() -> String {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        return appDelegate.sessionManager.session?.accessToken ?? ""
-    }
-    
     // MARK:- NETWORK INTERACTIONS
+    
     func getAudioFeatures(trackId: String, completion: @escaping(AudioFeatures) -> Void) {
-        let accessToken = getAccessToken()
+        guard let accessToken = accessToken else { return }
         let headers: HTTPHeaders = [
             "Authorization" : "Bearer \(accessToken)"
         ]
         Alamofire.request("\(baseURL)/audio-features/\(trackId)", headers: headers).responseData { response in
             switch response.result {
-            case .failure(let error):
-                print(error.localizedDescription)
             case .success(let data):
                 let decoder = JSONDecoder()
                 if let audioFeatures = try? decoder.decode(AudioFeatures.self, from: data) {
-                    // print(audioFeatures)
                     completion(audioFeatures)
                 } else {
                     print("[NETWORKING] error decoding")
                 }
+                
+            case .failure(let error):
+                print(error.localizedDescription)
             }
         }
     }
     
     func getPlaylist(playlistId: String, completion: @escaping () -> Void) {
-        let accessToken = getAccessToken()
+        guard let accessToken = accessToken else { return }
         let headers: HTTPHeaders = [
             "Authorization" : "Bearer \(accessToken)"
         ]
@@ -65,8 +65,7 @@ class Networking {
     }
     
     func getImage(item: SPTAppRemoteImageRepresentable, dimensions: CGSize,  completion: @escaping (UIImage) -> Void) {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let appRemote = appDelegate.spotifyAppRemote
+        let appRemote = SpotifyManager.shared.appRemote
         appRemote.imageAPI?.fetchImage(forItem: item, with: dimensions, callback: { (image, error) in
             if let error = error {
                 print(error.localizedDescription)
@@ -78,7 +77,7 @@ class Networking {
     
     func getRootContentItems(completion: @escaping ([SPTAppRemoteContentItem]) -> Void) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let appRemote = appDelegate.spotifyAppRemote
+        let appRemote = SpotifyManager.shared.appRemote
         
         appRemote.contentAPI?.fetchRootContentItems(forType: SPTAppRemoteContentTypeDefault, callback: { (items, error) in
             if let error = error {
@@ -94,7 +93,7 @@ class Networking {
     
     func getChildContentItems(of item: SPTAppRemoteContentItem, completion: @escaping ([SPTAppRemoteContentItem]) -> Void) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let appRemote = appDelegate.spotifyAppRemote
+        let appRemote = SpotifyManager.shared.appRemote
         
         appRemote.contentAPI?.fetchChildren(of: item, callback: { (items, error) in
             if let error = error {
@@ -107,5 +106,4 @@ class Networking {
             }
         })
     }
-    
 }

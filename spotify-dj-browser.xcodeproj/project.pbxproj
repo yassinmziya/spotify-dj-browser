@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -27,6 +27,7 @@
 		1CBFB37C22CFC179004D5259 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBFB37B22CFC179004D5259 /* Networking.swift */; };
 		1CBFB39222D17E08004D5259 /* CollapsedPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBFB39122D17E08004D5259 /* CollapsedPlayerView.swift */; };
 		50E29F837D55EDE74C58D127 /* Pods_spotify_dj_browser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA0369C2133BE515CF99F8A9 /* Pods_spotify_dj_browser.framework */; };
+		7845AE352676F86800EC2BEF /* SpotifyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7845AE342676F86800EC2BEF /* SpotifyManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 		1CBFB37B22CFC179004D5259 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		1CBFB39122D17E08004D5259 /* CollapsedPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollapsedPlayerView.swift; sourceTree = "<group>"; };
 		50A2C51330BB4B0F52E7AB69 /* Pods-spotify-dj-browser.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-spotify-dj-browser.release.xcconfig"; path = "Pods/Target Support Files/Pods-spotify-dj-browser/Pods-spotify-dj-browser.release.xcconfig"; sourceTree = "<group>"; };
+		7845AE342676F86800EC2BEF /* SpotifyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyManager.swift; sourceTree = "<group>"; };
 		C5D3763600EC4CE76DE2F878 /* Pods-spotify-dj-browser.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-spotify-dj-browser.debug.xcconfig"; path = "Pods/Target Support Files/Pods-spotify-dj-browser/Pods-spotify-dj-browser.debug.xcconfig"; sourceTree = "<group>"; };
 		CA0369C2133BE515CF99F8A9 /* Pods_spotify_dj_browser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_spotify_dj_browser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -106,6 +108,7 @@
 				1CBFB36F22CCFD69004D5259 /* Controllers */,
 				1CBFB36B22CCFC0D004D5259 /* Frameworks */,
 				1CBFB34E22CCF8E8004D5259 /* AppDelegate.swift */,
+				7845AE342676F86800EC2BEF /* SpotifyManager.swift */,
 				1CBFB35522CCF8E9004D5259 /* Assets.xcassets */,
 				1CBFB35722CCF8E9004D5259 /* LaunchScreen.storyboard */,
 				1CBFB35A22CCF8E9004D5259 /* Info.plist */,
@@ -281,19 +284,16 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-spotify-dj-browser/Pods-spotify-dj-browser-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-spotify-dj-browser/Pods-spotify-dj-browser-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-spotify-dj-browser/Pods-spotify-dj-browser-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-spotify-dj-browser/Pods-spotify-dj-browser-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-spotify-dj-browser/Pods-spotify-dj-browser-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -318,6 +318,7 @@
 				1C9EF7A622DB8FD600C22345 /* Int+Extensions.swift in Sources */,
 				1C9EF7A822DBCD1600C22345 /* TabBarController.swift in Sources */,
 				1CBFB39222D17E08004D5259 /* CollapsedPlayerView.swift in Sources */,
+				7845AE352676F86800EC2BEF /* SpotifyManager.swift in Sources */,
 				1C3BEE5122D3E4C1007684B9 /* PlayerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

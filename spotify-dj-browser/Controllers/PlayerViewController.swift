@@ -76,7 +76,15 @@ class PlayerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        
+        setupViews()
+        installConstraints()
+        setupPlayerObservers()
+        updatePlayer(notification: nil)
+    }
+    
+    private func setupViews() {
+        view.backgroundColor = .black
         view.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handleViewPan)))
         navigationController?.isNavigationBarHidden = true
         initialFrame = view.frame
@@ -98,14 +106,9 @@ class PlayerViewController: UIViewController {
         prevButton.addTarget(self, action: #selector(previousTrack), for: .touchUpInside)
         view.addSubview(skipButton)
         skipButton.addTarget(self, action: #selector(skipTrack), for: .touchUpInside)
-        
-        setupConstraints()
-        setupPlayerObservers()
-        updatePlayer(notification: nil)
     }
-    
 
-    func setupConstraints() {
+    func installConstraints() {
         albumArtImageView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.height.width.equalTo(view.snp.width).multipliedBy(0.75)

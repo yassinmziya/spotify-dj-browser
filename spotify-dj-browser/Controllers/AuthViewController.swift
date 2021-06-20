@@ -32,13 +32,11 @@ class AuthViewController: UIViewController {
             loginButton.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
             loginButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             loginButton.heightAnchor.constraint(equalToConstant: 56),
-            ])
+        ])
     }
     
     @objc func loginButtonPressed() {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let requestedScopes: SPTScope = [.appRemoteControl, .playlistModifyPrivate, .playlistModifyPublic, .streaming]
-        appDelegate.sessionManager.initiateSession(with: requestedScopes, options: .default)
+        SpotifyManager.shared.beginOAuthFlow()
     }
 
 }
